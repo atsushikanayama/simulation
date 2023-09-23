@@ -32,8 +32,10 @@ showtext_auto()
 # 1.2 シミューレーションとは
 # 1.3 シミュレーションでわかること
 
+## 標本相関係数の変動
+
 ```{r, error=TRUE, include=TRUE}
-## 設定と準備 
+# 設定と準備 
 rho <- 0.5  # 母相関: 二つの変数間の真の相関関係を設定
 n <- 25    # サンプルサイズ: 一回のシミュレーションで生成されるデータポイントの数
 iter <- 1000  # 反復回数: シミュレーションが何回実行されるかを設定
@@ -46,7 +48,7 @@ r
 ```
 
 ```{r, error=TRUE, include=TRUE}
-## シミュレーションの実行
+# シミュレーションの実行
 set.seed(123)  # シード値を設定: 同じシード値を使用すれば、同じ乱数系列を生成
 for (i in 1:iter) {
   Y1 <- rnorm(n, 0, 1)  # 標準正規分布からn個の乱数を生成
@@ -55,11 +57,93 @@ for (i in 1:iter) {
 }
 ```
 
-[補足](https://www.dropbox.com/scl/fi/2aiz1q5wl9ls8qikqcnrn/20230922_chapter1supplement1.html?rlkey=txe9u37e36fnsjaav9su2uizr&dl=0)
+[補足](https://htmlpreview.github.io/?https://raw.githubusercontent.com/atsushikanayama/simulation/main/20230922_chapter1supplement1.html)
+
+```{r, error=TRUE, include=TRUE}
+# 全てのr値を出力
+print(r)
+```
 
 ```{r, error=TRUE, include=TRUE}
 ## 結果の可視化
 plot(density(Y1), main="Y1のカーネル密度推定", xlab="Y1の値", ylab="密度", col="blue", lwd=2)
 plot(density(Y2), main="Y2のカーネル密度推定", xlab="Y2の値", ylab="密度", col="red", lwd=2)
 r |> hist(xlim = c(-0.2, 1), main="Y1とY2の相関のヒストグラム", xlab="相関", ylab="頻度")
+```
+## 無相関検定（帰無仮説が =0の検定）において帰無仮説が採択される確率
+
+```{r, error=TRUE, include=TRUE}
+# 設定と準備 
+rho <- 0
+n <- 2500
+iter <- 10000
+```
+
+```{r, error=TRUE, include=TRUE}
+# 結果を格納するオブジェクト 
+p <- rep(0, iter)
+p
+```
+
+```{r, error=TRUE, include=TRUE}
+# シミュレーション
+set.seed(123) 
+for (i in 1:iter) { 
+  Y1 <- rnorm(n, 0, 1) 
+  Y2 <- Y1 * rho + rnorm(n, 0, (1 - rho^2)^0.5) 
+  p[i] <- cor.test(Y1, Y2)$p.value }
+```
+
+```{r, error=TRUE, include=TRUE}
+# 全てのp値を出力
+print(p)
+```
+
+```{r, error=TRUE, include=TRUE}
+# 結果
+ifelse(p < 0.05, 1, 0) |> mean() 
+# ifelse(p < 0.05, 1, 0): p値が0.05未満の場合（帰無仮説を棄却する場合）に1が、p値が0.05以上の場合（帰無仮説を採択する場合）に0が割り当てられます。
+# |> mean(): Rのパイプ演算子を使用して、前のステップで生成されたベクトルの平均値を計算
+```
+
+## n増し問題
+
+```{r, error=TRUE, include=TRUE}
+# 設定と準備 
+rho <- 0 
+n <- 25 
+iter <- 10000 
+alpha <- 0.05
+```
+
+```{r, error=TRUE, include=TRUE}
+# 結果を格納するオブジェクト 
+p <- rep(0, iter)
+```
+
+```{r, error=TRUE, include=TRUE}
+## シミュレーション 
+set.seed(123) 
+for (i in 1:iter) { 
+  # 最初のデータ 
+  Y1 <- rnorm(n, 0, 1) 
+  Y2 <- Y1 * rho + rnorm(n, 0, (1 - rho^2)^0.5) 
+  p[i] <- cor.test(Y1, Y2)$p.value 
+  # データ追加 
+  count <- 0 
+  ## p値が5％を下回るか、データが当初の倍になるまで増やし続ける 
+  while (p[i] >= alpha && count < n * 2) {
+    # 有意ではなかったとき、それぞれの変数に1つデータを追加 
+    Y1_add <- rnorm(1, 0, 1) 
+    Y1 <- c(Y1, Y1_add) 
+    Y2 <- c(Y2, Y1_add * rho + rnorm(1, 0, (1 - rho^2)^0.5)) 
+    p[i] <- cor.test(Y1, Y2)$p.value 
+    count <- count + 1 
+  } 
+}
+```
+
+```{r, error=TRUE, include=TRUE}
+## 結果 
+ifelse(p < 0.05, 1, 0) |> mean()
 ```

@@ -22,21 +22,24 @@ header-includes:
   - \setCJKmainfont{Hiragino Mincho Pro}
 ---
 
-# 補足: \( Y_1 \) と \( Y_2 \) の間の相関の調整
+# 相関の調整: \( Y_1 \) と \( Y_2 \) の間の相関
 
 このセクションでは、変数 \( Y_1 \) と所定の母相関 \( \rho \) を用いて、新しい変数 \( Y_2 \) を生成するプロセスについて詳細に説明します。
 
 ## ステップ1: \( Y_2 \) の定義
-まず、\( Y_2 \) を以下のように定義します。
+
+\( Y_2 \) を以下のように定義します。
+
 \[
 \begin{equation}
 Y_2 = Y_1 \cdot \rho + \text{{ノイズ}} \tag{1}
 \end{equation}
 \]
-ここで、「ノイズ」は、\( Y_1 \) に加えるノイズ項です。
 
 ## ステップ2: \( Y_2 \) の分散の計算
-次に、\( Y_2 \) の分散を計算します。ここで、\( Y_2 \) は、\( Y_1 \cdot \rho + \text{{ノイズ}} \) で定義されます。この定義に基づいて、\( Y_2 \) の分散は以下のようになります。
+
+\( Y_2 \) の定義に基づいて、\( Y_2 \) の分散は以下のようになります。
+
 \[
 \begin{equation}
 \text{{Var}}(Y_2) = \rho^2 \cdot \text{{Var}}(Y_1) + \text{{Var}}(\text{{ノイズ}}) \tag{2}
@@ -44,13 +47,17 @@ Y_2 = Y_1 \cdot \rho + \text{{ノイズ}} \tag{1}
 \]
 
 ## ステップ3: 相関係数 \( \rho \) の設定
+
 \( Y_1 \) と \( Y_2 \) の間の相関係数 \( \rho \) は、以下の式で定義されます。
+
 \[
 \begin{equation}
 \rho = \frac{\text{{Cov}}(Y_1, Y_2)}{\sqrt{\text{{Var}}(Y_1) \cdot \text{{Var}}(Y_2)}} \tag{3}
 \end{equation}
 \]
+
 ステップ2で計算した \( \text{{Var}}(Y_2) \) を代入すると、以下のようになります。
+
 \[
 \begin{equation}
 \rho = \frac{\text{{Cov}}(Y_1, Y_2)}{\sqrt{\text{{Var}}(Y_1) \cdot (\rho^2 \cdot \text{{Var}}(Y_1) + \text{{Var}}(\text{{ノイズ}}))}} \tag{4}
@@ -58,7 +65,9 @@ Y_2 = Y_1 \cdot \rho + \text{{ノイズ}} \tag{1}
 \]
 
 ## ステップ4: ノイズの分散 \( \text{{Var}}(\text{{ノイズ}}) \) の解
+
 数式 \(4\) を整理して、ノイズの分散 \( \text{{Var}}(\text{{ノイズ}}) \) を求めます。
+
 \[
 \begin{equation}
 \text{{Var}}(\text{{ノイズ}}) = \text{{Var}}(Y_1) \cdot (1 - \rho^2) \tag{5}
@@ -66,10 +75,13 @@ Y_2 = Y_1 \cdot \rho + \text{{ノイズ}} \tag{1}
 \]
 
 ## ステップ5: ノイズの標準偏差の計算
+
 最後に、ノイズの標準偏差 \( \sigma \) を計算します。
+
 \[
 \begin{equation}
 \sigma = \sqrt{\text{{Var}}(Y_1) \cdot (1 - \rho^2)} \tag{6}
 \end{equation}
 \]
+
 この標準偏差 \( \sigma \) のノイズ項を \( Y_1 \cdot \rho \) に加えることで、指定された相関 \( \rho \) を持つ変数 \( Y_2 \) を生成できます。

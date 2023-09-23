@@ -1504,29 +1504,27 @@ border-radius: 0px;
 </div>
 
 
-<div id="補足-y_1-と-y_2-の間の相関の調整" class="section level1">
-<h1>補足: <span class="math inline">\(Y_1\)</span> と <span class="math inline">\(Y_2\)</span> の間の相関の調整</h1>
+<div id="相関の調整-y_1-と-y_2-の間の相関" class="section level1">
+<h1>相関の調整: <span class="math inline">\(Y_1\)</span> と <span class="math inline">\(Y_2\)</span> の間の相関</h1>
 <p>このセクションでは、変数 <span class="math inline">\(Y_1\)</span>
 と所定の母相関 <span class="math inline">\(\rho\)</span>
 を用いて、新しい変数 <span class="math inline">\(Y_2\)</span>
 を生成するプロセスについて詳細に説明します。</p>
 <div id="ステップ1-y_2-の定義" class="section level2">
 <h2>ステップ1: <span class="math inline">\(Y_2\)</span> の定義</h2>
-<p>まず、<span class="math inline">\(Y_2\)</span>
-を以下のように定義します。 <span class="math display">\[
+<p><span class="math inline">\(Y_2\)</span>
+を以下のように定義します。</p>
+<p><span class="math display">\[
 \begin{equation}
 Y_2 = Y_1 \cdot \rho + \text{{ノイズ}} \tag{1}
 \end{equation}
-\]</span> ここで、「ノイズ」は、<span class="math inline">\(Y_1\)</span>
-に加えるノイズ項です。</p>
+\]</span></p>
 </div>
 <div id="ステップ2-y_2-の分散の計算" class="section level2">
 <h2>ステップ2: <span class="math inline">\(Y_2\)</span>
 の分散の計算</h2>
-<p>次に、<span class="math inline">\(Y_2\)</span>
-の分散を計算します。ここで、<span class="math inline">\(Y_2\)</span>
-は、<span class="math inline">\(Y_1 \cdot \rho +
-\text{{ノイズ}}\)</span> で定義されます。この定義に基づいて、<span class="math inline">\(Y_2\)</span> の分散は以下のようになります。 <span class="math display">\[
+<p><span class="math inline">\(Y_2\)</span> の定義に基づいて、<span class="math inline">\(Y_2\)</span> の分散は以下のようになります。</p>
+<p><span class="math display">\[
 \begin{equation}
 \text{{Var}}(Y_2) = \rho^2 \cdot \text{{Var}}(Y_1) +
 \text{{Var}}(\text{{ノイズ}}) \tag{2}
@@ -1536,13 +1534,16 @@ Y_2 = Y_1 \cdot \rho + \text{{ノイズ}} \tag{1}
 <div id="ステップ3-相関係数-rho-の設定" class="section level2">
 <h2>ステップ3: 相関係数 <span class="math inline">\(\rho\)</span>
 の設定</h2>
-<p><span class="math inline">\(Y_1\)</span> と <span class="math inline">\(Y_2\)</span> の間の相関係数 <span class="math inline">\(\rho\)</span> は、以下の式で定義されます。 <span class="math display">\[
+<p><span class="math inline">\(Y_1\)</span> と <span class="math inline">\(Y_2\)</span> の間の相関係数 <span class="math inline">\(\rho\)</span> は、以下の式で定義されます。</p>
+<p><span class="math display">\[
 \begin{equation}
 \rho = \frac{\text{{Cov}}(Y_1, Y_2)}{\sqrt{\text{{Var}}(Y_1) \cdot
 \text{{Var}}(Y_2)}} \tag{3}
 \end{equation}
-\]</span> ステップ2で計算した <span class="math inline">\(\text{{Var}}(Y_2)\)</span>
-を代入すると、以下のようになります。 <span class="math display">\[
+\]</span></p>
+<p>ステップ2で計算した <span class="math inline">\(\text{{Var}}(Y_2)\)</span>
+を代入すると、以下のようになります。</p>
+<p><span class="math display">\[
 \begin{equation}
 \rho = \frac{\text{{Cov}}(Y_1, Y_2)}{\sqrt{\text{{Var}}(Y_1) \cdot
 (\rho^2 \cdot \text{{Var}}(Y_1) + \text{{Var}}(\text{{ノイズ}}))}}
@@ -1554,7 +1555,8 @@ Y_2 = Y_1 \cdot \rho + \text{{ノイズ}} \tag{1}
 <h2>ステップ4: ノイズの分散 <span class="math inline">\(\text{{Var}}(\text{{ノイズ}})\)</span> の解</h2>
 <p>数式 <span class="math inline">\(4\)</span> を整理して、ノイズの分散
 <span class="math inline">\(\text{{Var}}(\text{{ノイズ}})\)</span>
-を求めます。 <span class="math display">\[
+を求めます。</p>
+<p><span class="math display">\[
 \begin{equation}
 \text{{Var}}(\text{{ノイズ}}) = \text{{Var}}(Y_1) \cdot (1 - \rho^2)
 \tag{5}
@@ -1564,12 +1566,14 @@ Y_2 = Y_1 \cdot \rho + \text{{ノイズ}} \tag{1}
 <div id="ステップ5-ノイズの標準偏差の計算" class="section level2">
 <h2>ステップ5: ノイズの標準偏差の計算</h2>
 <p>最後に、ノイズの標準偏差 <span class="math inline">\(\sigma\)</span>
-を計算します。 <span class="math display">\[
+を計算します。</p>
+<p><span class="math display">\[
 \begin{equation}
 \sigma = \sqrt{\text{{Var}}(Y_1) \cdot (1 - \rho^2)} \tag{6}
 \end{equation}
-\]</span> この標準偏差 <span class="math inline">\(\sigma\)</span>
-のノイズ項を <span class="math inline">\(Y_1 \cdot \rho\)</span>
+\]</span></p>
+<p>この標準偏差 <span class="math inline">\(\sigma\)</span> のノイズ項を
+<span class="math inline">\(Y_1 \cdot \rho\)</span>
 に加えることで、指定された相関 <span class="math inline">\(\rho\)</span>
 を持つ変数 <span class="math inline">\(Y_2\)</span> を生成できます。</p>
 </div>
