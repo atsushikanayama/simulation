@@ -1,0 +1,33 @@
+---
+title: "もくじ"
+author: "まとめ by 金山篤志"
+date: "2023-09-28"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme: cosmo
+  ioslides_presentation:
+    toc: true
+  word_document:
+    toc: true
+  beamer_presentation:
+    toc: true
+    latex_engine: xelatex
+  pdf_document:
+    toc: true
+    latex_engine: xelatex
+header-includes:
+  - \usepackage{xeCJK}
+  - \setCJKmainfont{Hiragino Mincho Pro}
+---
+
+## 準備
+
+- [統計学基礎用語](https://htmlpreview.github.io/?https://raw.githubusercontent.com/atsushikanayama/simulation/main/20230922_chapter1supplement1.html)
+
+## 20230922 
+
+- [第一章](https://htmlpreview.github.io/?https://raw.githubusercontent.com/atsushikanayama/simulation/main/20230922_chapter1supplement1.html)
+
+- [第一章 補足](https://htmlpreview.github.io/?https://raw.githubusercontent.com/atsushikanayama/simulation/main/20230922_chapter1supplement1.html)

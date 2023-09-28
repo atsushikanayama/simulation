@@ -1,0 +1,73 @@
+---
+title: "統計学基礎用語"
+author: "まとめ by 金山篤志"
+date: "2023-09-28"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme: cosmo
+  ioslides_presentation:
+    toc: true
+  word_document:
+    toc: true
+  beamer_presentation:
+    toc: true
+    latex_engine: xelatex
+  pdf_document:
+    toc: true
+    latex_engine: xelatex
+header-includes:
+  - \usepackage{xeCJK}
+  - \setCJKmainfont{Hiragino Mincho Pro}
+---
+
+## 確率変数（Random Variable）
+確率変数は、各事象に一意の数値を割り当てる関数です。例えば、サイコロの出る目を確率変数$X$とすると、出る目「1」は$X=1$と表されます。
+
+## 推定量（Estimator）
+推定量は、母集団パラメータを推定するためのサンプルデータの関数です。標本平均は推定量の一例で、以下のように定義されます：  
+\[ \bar{X} = \frac{1}{n} \sum_{i=1}^{n} X_i \]
+
+## 推定値（Estimate）
+推定値は、特定のサンプルデータに基づいて計算された推定量の値です。例えば、標本平均の推定値は$\bar{x}$です。
+
+## 不偏推定量（Unbiased Estimator）
+不偏推定量は、その期待値が真のパラメータの値と一致する推定量です。標本分散は不偏推定量の一例で、以下のように定義されます：  
+\[ S^2 = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})^2 \]
+
+## 実現値（Realization）
+実現値は、確率変数が取る具体的な値です。例えば、サイコロの出た目「3」は確率変数$X$の実現値です。
+
+## 母集団（Population）
+母集団は全ての可能な観測値の集合です。通常は無限大と考えられ、これが推定や検定の対象となります。
+
+## 標本（Sample）
+標本は母集団から選ばれた観測値の集合です。これを用いて母集団の特性を推定します。
+
+## 母平均（Population Mean）
+母平均は母集団の平均値で、通常は$\mu$で表されます。
+
+## 標本平均（Sample Mean）
+標本平均は標本の平均値で、通常は$\bar{x}$で表されます。
+
+## 母分散（Population Variance）
+母分散は母集団の分散で、通常は$\sigma^2$で表されます。
+
+## 標本分散（Sample Variance）
+標本分散は標本の分散で、通常は$s^2$で表されます。
+
+## 標準偏差（Standard Deviation）
+標準偏差は分散の平方根で、母集団の標準偏差は$\sigma$、標本の標準偏差は$s$で表されます。
+
+## 確率密度関数（Probability Density Function; PDF）と累積分布関数（Cumulative Distribution Function; CDF）
+確率密度関数は連続型確率変数の確率分布を表し、累積分布関数は確率変数が特定の値以下となる確率を表します。
+
+## 点推定（Point Estimation）と区間推定（Interval Estimation）
+点推定は母集団パラメータの一つの値を推定し、区間推定は母集団パラメータが取りうる一連の値、すなわち信頼区間を推定します。
+
+## 仮説検定（Hypothesis Testing）とp値（p-value）
+仮説検定はある仮説が真であるかどうかを統計的に判断し、p値は帰無仮説が真である場合に得られるデータ以上に極端なデータが得られる確率です。
+
+## 有意水準（Significance Level）
+有意水準は仮説検定で用いる、帰無仮説を棄却するための閾値で、通常は$\alpha$で表されます。
