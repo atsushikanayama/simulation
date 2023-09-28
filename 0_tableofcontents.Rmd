@@ -24,7 +24,7 @@ header-includes:
 
 ## 準備
 
-- [用語](https://htmlpreview.github.io/?https://raw.githubusercontent.com/atsushikanayama/simulation/main/20230922_chapter1supplement1.html)
+- [用語](https://htmlpreview.github.io/?https://raw.githubusercontent.com/atsushikanayama/simulation/main/0_terminology.html)
 
 ## 20230922 
 
