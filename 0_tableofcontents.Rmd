@@ -24,10 +24,10 @@ header-includes:
 
 ## 準備
 
-- [統計学基礎用語](https://htmlpreview.github.io/?https://raw.githubusercontent.com/atsushikanayama/simulation/main/20230922_chapter1supplement1.html)
+- [用語](https://htmlpreview.github.io/?https://raw.githubusercontent.com/atsushikanayama/simulation/main/20230922_chapter1supplement1.html)
 
 ## 20230922 
 
-- [第一章](https://htmlpreview.github.io/?https://raw.githubusercontent.com/atsushikanayama/simulation/main/20230922_chapter1supplement1.html)
+- [第一章](https://htmlpreview.github.io/?https://raw.githubusercontent.com/atsushikanayama/simulation/main/0_terminology.html)
 
 - [第一章 補足](https://htmlpreview.github.io/?https://raw.githubusercontent.com/atsushikanayama/simulation/main/20230922_chapter1supplement1.html)
